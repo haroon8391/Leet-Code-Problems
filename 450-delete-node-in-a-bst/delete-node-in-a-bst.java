@@ -16,33 +16,28 @@
 class Solution {
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
-            return null; // Base case: if the tree is empty
+            return null;
         }
         
         if (key < root.val) {
-            root.left = deleteNode(root.left, key); // Key is in the left subtree
+            root.left = deleteNode(root.left, key); 
         } else if (key > root.val) {
-            root.right = deleteNode(root.right, key); // Key is in the right subtree
+            root.right = deleteNode(root.right, key); 
         } else {
-            // Node to be deleted is found
             
-            // Case 1: Node has no children (leaf node)
             if (root.left == null && root.right == null) {
-                return null; // Remove the leaf node
+                return null;
             }
             
-            // Case 2: Node has only one child
             if (root.left == null) {
-                return root.right; // Replace node with its right child
+                return root.right; 
             } else if (root.right == null) {
-                return root.left; // Replace node with its left child
+                return root.left; 
             }
             
-            // Case 3: Node has two children
-            // Find the smallest value in the right subtree (in-order successor)
             TreeNode minNode = findMin(root.right);
-            root.val = minNode.val; // Replace the value of the node with the in-order successor's value
-            root.right = deleteNode(root.right, minNode.val); // Delete the in-order successor
+            root.val = minNode.val; 
+            root.right = deleteNode(root.right, minNode.val); 
         }
         
         return root;
@@ -50,7 +45,7 @@ class Solution {
     
     private TreeNode findMin(TreeNode node) {
         while (node.left != null) {
-            node = node.left; // Go to the leftmost node
+            node = node.left;
         }
         return node;
     }
