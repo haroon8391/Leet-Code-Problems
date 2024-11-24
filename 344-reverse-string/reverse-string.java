@@ -4,11 +4,11 @@ class Solution {
         int left = 0;
         
         while(left < right){
-            char temp = s[right];
-            s[right] = s[left];
-            s[left] = temp;
-            right--;
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
             left++;
+            right--;
         }
     }
 }
