@@ -4,24 +4,20 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    let ans = [];
-    let check = false;
-    for(let i=0; i<nums.length; i++){
-        let rem = target - nums[i];
+    let ans = []
+    let obj = {}
 
-        for(let j=i; j<nums.length; j++){
-            if(rem === nums[j+1]){
-                ans[0] = i;
-                ans[1] = j+1;
-                check = true;
-                break;
-            }
+    for(let i=0; i< nums.length; i++){
+        let rem = target - nums[i]
+
+        if(rem in obj){
+            ans[0] = obj[rem]
+            ans[1] = i;
+            return ans
         }
 
-        if(check)
-        break;
+        obj[nums[i]] = i;
     }
-
 
     return ans;
 };
