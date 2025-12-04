@@ -10,9 +10,7 @@ function isPalindrome(s){
     let j = str.length - 1;
 
     while(i < j){
-        if(str[i] !== str[j]){
-            return false;
-        }
+        if(str[i] !== str[j]) return false;
 
         i++;
         j--;
