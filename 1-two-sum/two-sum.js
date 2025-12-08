@@ -1,14 +1,15 @@
 function twoSum(nums, target){
-    let ans = []
+
     let obj = {}
+    let ans = []
 
     for(let i=0; i<nums.length; i++){
-        let rem = target - nums[i]
+        let rem = target - nums[i];
 
         if(rem in obj){
-            ans[0] = obj[rem]
-            ans[1] = i;
-            return ans;
+            ans[0] = i;
+            ans[1] = obj[rem]
+            break
         }
 
         obj[nums[i]] = i;
