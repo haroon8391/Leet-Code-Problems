@@ -3,22 +3,31 @@
  * @param {string} t
  * @return {boolean}
  */
-var isAnagram = function(s, t) {
-    if(s.length !== t.length) return false;
+function isAnagram(s, t) {
+    let sLength = s.length;
+    let tLength = t.length;
 
-    let obj = {};
+    if(sLength !== tLength){
+        return false;
+    }
+
+    let obj = {}
 
     for(let char of s){
-        obj[char] = (obj[char] || 0) + 1;
+        if(char in obj){
+            obj[char] += 1;
+        }else{
+            obj[char] = 1;
+        }
     }
-    
+
 
     for(let char of t){
-        if(!obj[char]){
-            return false;
+        if(obj[char] !== undefined && obj[char] !== 0){
+            obj[char] -= 1;
         }
         else{
-        obj[char] = obj[char] - 1;
+            return false;
         }
     }
 
